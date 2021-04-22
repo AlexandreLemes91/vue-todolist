@@ -17,16 +17,25 @@
     
     <div class="container" id="app">
         <h1>ToDo List</h1>
-        <input 
-        type="text" 
-        class="input" 
-        placeholder="vuoi aggiungere altro?"
-        v-model.trim="newToDo"
-        @keyup.enter="addToDo"> 
+        <section>
+            <input 
+            type="text" 
+            class="input" 
+            placeholder="vuoi aggiungere altro?"
+            v-model.trim="newToDo"
+            @keyup.enter="addToDo"
+            ref="todoReset">
+            
+            <button @click="addToDo">Add ToDo</button>
+        </section>
         
-        <ul class="list"></ul>
-            <li v-for="todo in todos">{{todo.text}}<span>X</span>
+        <ul v-if="todos.length > 0" class="list">
+            <li v-for="(todo, index) in todos">
+                {{todo.text}}
+                <span @click="removeToDo(index)">X</span>
             </li>
+        </ul>
+        <h2 v-else>Hai completato tutte le TODO!</h2>
     </div>
     
     <!-- js -->
