@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- style -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    
+    <div class="container" id="app">
+        <h1>ToDo List</h1>
+        <input 
+        type="text" 
+        class="input" 
+        placeholder="vuoi aggiungere altro?"
+        v-model.trim="newToDo"
+        @keyup.enter="addToDo"> 
+        
+        <ul class="list"></ul>
+            <li v-for="todo in todos">{{todo.text}}<span>X</span>
+            </li>
+    </div>
+    
+    <!-- js -->
+    <script src="./js/script.js"></script>
+</body>
+</html>
